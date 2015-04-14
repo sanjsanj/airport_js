@@ -8,5 +8,9 @@ Plane.prototype.requestLand = function(airport) {
 };
 
 Plane.prototype.land = function(airport) {
-  this.status = 'landed';
+  if (this.status === 'flying') {
+    this.status = 'landed';
+  } else {
+    throw "Already landed";
+  }
 };

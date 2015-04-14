@@ -14,9 +14,14 @@ describe('Plane when created', function() {
 });
 
 describe('Plane can', function() {
+  var airport;
+
+  beforeEach(function() {
+    plane = new Plane();
+    airport = jasmine.createSpyObj('airport', ['landingPermission', 'takeoffPermission']);
+  });
 
   it('request to land at airport', function() {
-    airport = jasmine.createSpyObj('airport', ['landingPermission']);
     airport.landingPermission.and.callFake(function() {
       return true;
     });
@@ -29,9 +34,16 @@ describe('Plane can', function() {
   });
 
   it('not land after landing', function() {
-    expect(plane.status).toBe('flying');
     plane.land(airport);
     expect(plane.status).toBe('landed');
-    expect( function(){ plane.land(airport); } ).toThrow(new Error("Already landed"));
+    expect(function(){plane.land(airport)}).toThrow("Already landed");
+  });
+
+  it('request to take off', function() {
+    airport.takeoffPermission.and.callFake(function() {
+      return true;
+    });
+    plane.land(airport);
+    expect(plane.requestTakeoff(airport)).toEqual(true);
   });
 });
