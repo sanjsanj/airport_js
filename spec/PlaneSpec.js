@@ -7,4 +7,8 @@ describe('Plane when created', function() {
   it('has \'flying\' status', function() {
     expect(plane.status).toBe('flying');
   });
+
+  it('is located in the air', function() {
+    expect(plane.location).toBe('air');
+  })
 });
