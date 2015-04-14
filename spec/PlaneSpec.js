@@ -14,9 +14,17 @@ describe('Plane when created', function() {
 });
 
 describe('Plane can', function() {
+
   it('request to land at airport', function() {
     airport = jasmine.createSpyObj('airport', ['landingPermission']);
-    // spyOn(airport, 'landingPermission').and.returnValue(true);
-    expect(plane.requestLand(airport)).toBe(true);
+    airport.landingPermission.and.callFake(function() {
+      return true;
+    });
+    expect(plane.requestLand(airport)).toEqual(true);
+  });
+
+  it('can land and changes status to landed', function() {
+    plane.land;
+    expect(plane.status).toBe('landed');
   });
 });
