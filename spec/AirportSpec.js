@@ -11,4 +11,11 @@ describe('Airport knows', function() {
     });
     expect(airport.locationOf(plane)).toBe('air');
   });
+
+  it('plane is in the airport', function() {
+    plane.location.and.callFake(function() {
+      return 'airport';
+    });
+    expect(airport.locationOf(plane)).toBe('airport');
+  });
 });

@@ -59,3 +59,16 @@ describe('Plane can', function() {
   });
 
 });
+
+describe('Plane knows', function() {
+
+  it('when it\'s in the air', function() {
+    expect(plane.location).toBe('air');
+  });
+
+  it('when it\'s in the airport', function() {
+    plane.land(airport);
+    expect(plane.location).toBe('airport');
+  });
+
+});
