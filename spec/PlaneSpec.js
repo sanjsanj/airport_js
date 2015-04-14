@@ -62,13 +62,26 @@ describe('Plane can', function() {
 
 describe('Plane knows', function() {
 
-  it('when it\'s in the air', function() {
+  var airport;
+
+  beforeEach(function() {
+    plane = new Plane();
+    airport = jasmine.createSpyObj('airport', ['landingPermission', 'takeoffPermission']);
+  });
+
+  it('it\'s in the air when created', function() {
     expect(plane.location).toBe('air');
   });
 
-  it('when it\'s in the airport', function() {
+  it('it\'s in the airport after landing', function() {
     plane.land(airport);
     expect(plane.location).toBe('airport');
+  });
+
+  it('it\'s in the air after takeoff', function() {
+    plane.land(airport);
+    plane.takeoff(airport);
+    expect(plane.located).toBe('air');
   });
 
 });
