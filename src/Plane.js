@@ -7,10 +7,22 @@ Plane.prototype.requestLand = function(airport) {
   return airport.landingPermission();
 };
 
+Plane.prototype.requestTakeoff = function(airport) {
+  return airport.takeoffPermission();
+};
+
 Plane.prototype.land = function(airport) {
   if (this.status === 'flying') {
     this.status = 'landed';
   } else {
     throw "Already landed";
+  }
+};
+
+Plane.prototype.takeoff = function(airport) {
+  if (this.status === 'landed') {
+    this.status = 'flying';
+  } else {
+    throw "Already taken off";
   }
 };
