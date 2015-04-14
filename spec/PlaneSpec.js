@@ -23,8 +23,15 @@ describe('Plane can', function() {
     expect(plane.requestLand(airport)).toEqual(true);
   });
 
-  it('can land and changes status to landed', function() {
-    plane.land;
+  it('land and change status to landed', function() {
+    plane.land(airport);
     expect(plane.status).toBe('landed');
+  });
+
+  it('not land after landing', function() {
+    expect(plane.status).toBe('flying');
+    plane.land(airport);
+    expect(plane.status).toBe('landed');
+    expect( function(){ plane.land(airport); } ).toThrow(new Error("Already landed"));
   });
 });

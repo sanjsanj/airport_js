@@ -6,3 +6,7 @@ var Plane = function() {
 Plane.prototype.requestLand = function(airport) {
   return airport.landingPermission();
 };
+
+Plane.prototype.land = function(airport) {
+  this.status = 'landed';
+};
