@@ -19,3 +19,19 @@ describe('Airport knows', function() {
     expect(airport.locationOf(plane)).toBe('airport');
   });
 });
+
+describe('Airport can', function() {
+
+  beforeEach(function() {
+    airport = new Airport();
+    plane = jasmine.createSpyObj('plane', ['location', 'takeoff']);
+  });
+
+  it('order a plane to take off', function() {
+    plane.takeoff.and.callFake(function() {
+      return true;
+    });
+    expect(airport.orderTakeoff(plane)).toBe('true');
+  });
+
+});

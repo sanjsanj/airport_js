@@ -81,7 +81,7 @@ describe('Plane knows', function() {
   it('it\'s in the air after takeoff', function() {
     plane.land(airport);
     plane.takeoff(airport);
-    expect(plane.located).toBe('air');
+    expect(plane.location).toBe('air');
   });
 
 });

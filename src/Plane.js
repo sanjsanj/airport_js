@@ -23,6 +23,7 @@ Plane.prototype.land = function(airport) {
 Plane.prototype.takeoff = function(airport) {
   if (this.status === 'landed') {
     this.status = 'flying';
+    this.location = 'air';
   } else {
     throw "Already taken off";
   }
