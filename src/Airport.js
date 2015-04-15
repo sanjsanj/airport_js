@@ -1,5 +1,6 @@
 var Airport = function() {
   this.capacity = 0;
+  this.landedPlanes = [];
 };
 
 Airport.prototype.locationOf = function(plane) {
@@ -13,8 +14,8 @@ Airport.prototype.orderTakeoff = function(plane) {
 Airport.prototype.landingPermission = function(plane) {
   if (this.capacity < 6 && this.isWeatherGood()) {
     this.capacity ++;
+    this.landedPlanes.push(plane);
     return plane.land(this);
-    console.log(this.capacity);
   } else {
     throw "Permission denied";
   };

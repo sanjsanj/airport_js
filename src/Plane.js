@@ -12,7 +12,7 @@ Plane.prototype.status = function() {
 };
 
 Plane.prototype.requestLand = function(airport) {
-  return airport.landingPermission();
+  return airport.landingPermission(this);
 };
 
 Plane.prototype.requestTakeoff = function(airport) {

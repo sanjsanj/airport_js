@@ -1,10 +1,13 @@
 describe('Integration test', function() {
 
-  var airport = new Airport;
-  var planes = [];
-  for (var i = 0; i < 6; i ++) {
-    planes.push(new Plane);
-  };
+  beforeEach(function(){
+    airport = new Airport;
+    planes = [];
+    for (var i = 0; i < 6; i ++) {
+      planes.push(new Plane);
+    };
+  });
+
 
   it('6 planes can be created', function() {
     console.log(planes);
@@ -21,7 +24,7 @@ describe('Integration test', function() {
     planes.forEach(function(plane) {
       plane.requestLand(airport);
     });
-    expect(airport.landedPlanes()).toBe(6);
+    expect(airport.landedPlanes.length).toBe(6);
   });
 
 });
