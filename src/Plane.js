@@ -17,7 +17,7 @@ Plane.prototype.land = function(airport) {
     this.location = 'airport';
   } else {
     throw "Already landed";
-  }
+  };
 };
 
 Plane.prototype.takeoff = function(airport) {
