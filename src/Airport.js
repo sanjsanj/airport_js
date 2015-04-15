@@ -10,5 +10,5 @@ Airport.prototype.orderTakeoff = function(plane) {
 };
 
 Airport.prototype.landingPermission = function(plane) {
-  return true;
+  return plane.land(this);
 };

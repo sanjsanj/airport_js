@@ -28,7 +28,7 @@ describe('Airport can', function() {
 
   beforeEach(function() {
     airport = new Airport();
-    plane = jasmine.createSpyObj('plane', ['location', 'takeoff', 'requestLand']);
+    plane = jasmine.createSpyObj('plane', ['location', 'takeoff', 'land']);
   });
 
   it('order a plane to take off', function() {
@@ -38,19 +38,11 @@ describe('Airport can', function() {
     expect(airport.orderTakeoff(plane)).toBe(true);
   });
 
-  it('allow a plane to land', function() {
-    plane.requestLand.and.callFake(function() {
-      airport.landingPermission(plane);
+  it('let a plane land', function() {
+    plane.land.and.callFake(function() {
+      return true;
     });
-    console.log(plane.requestLand);
-    expect(plane.requestLand).toBe(true);
+    expect(airport.landingPermission(plane)).toBe(true);
   });
 
-});
-
-describe('1', function() {
-
-  it('1', function() {
-    // console.log(plane);
-  });
 });
