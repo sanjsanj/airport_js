@@ -8,6 +8,7 @@ Airport.prototype.locationOf = function(plane) {
 };
 
 Airport.prototype.orderTakeoff = function(plane) {
+  this.landedPlanes.splice(plane);
   return plane.takeoff(this);
 };
 
@@ -23,6 +24,7 @@ Airport.prototype.landingPermission = function(plane) {
 
 Airport.prototype.takeOffPermission = function(plane) {
   if (this.isWeatherGood()) {
+    // this.landedPlanes.splice(plane);
     return this.orderTakeoff(plane);
   } else {
     throw "Permission denied";

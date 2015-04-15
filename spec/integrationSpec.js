@@ -45,4 +45,15 @@ describe('Integration test', function() {
     expect(function(){plane.requestLand(airport)}).toThrow("Permission denied");
   });
 
+  it('After all planes have taken off there are no more landed planes', function() {
+    planes.forEach(function(plane) {
+      plane.requestLand(airport);
+    });
+    planes.forEach(function(plane) {
+      // plane.requestTakeoff(airport);
+      airport.orderTakeoff(plane);
+    });
+    expect(airport.landedPlanes.length).toBe(0);
+  });
+
 });

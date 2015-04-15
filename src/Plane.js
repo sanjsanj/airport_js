@@ -16,7 +16,7 @@ Plane.prototype.requestLand = function(airport) {
 };
 
 Plane.prototype.requestTakeoff = function(airport) {
-  return airport.takeoffPermission();
+  return airport.takeoffPermission(this);
 };
 
 Plane.prototype.land = function(airport) {
