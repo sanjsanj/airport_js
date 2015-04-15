@@ -5,11 +5,11 @@ describe('Plane when created', function() {
   });
 
   it('has \'flying\' status', function() {
-    expect(plane.status).toBe('flying');
+    expect(plane.status()).toBe('flying');
   });
 
   it('is located in the air', function() {
-    expect(plane.location).toBe('air');
+    expect(plane.location()).toBe('air');
   })
 });
 
@@ -30,7 +30,7 @@ describe('Plane can', function() {
 
   it('land and change status to \'landed\'', function() {
     plane.land(airport);
-    expect(plane.status).toBe('landed');
+    expect(plane.status()).toBe('landed');
   });
 
   it('not land after landing', function() {
@@ -49,7 +49,7 @@ describe('Plane can', function() {
   it('takeoff and change status to \'flying\'', function() {
     plane.land(airport);
     plane.takeoff(airport);
-    expect(plane.status).toBe('flying');
+    expect(plane.status()).toBe('flying');
   });
 
   it('not takeoff after takeoff', function() {
@@ -70,18 +70,18 @@ describe('Plane knows', function() {
   });
 
   it('it\'s in the air when created', function() {
-    expect(plane.location).toBe('air');
+    expect(plane.location()).toBe('air');
   });
 
   it('it\'s in the airport after landing', function() {
     plane.land(airport);
-    expect(plane.location).toBe('airport');
+    expect(plane.location()).toBe('airport');
   });
 
   it('it\'s in the air after takeoff', function() {
     plane.land(airport);
     plane.takeoff(airport);
-    expect(plane.location).toBe('air');
+    expect(plane.location()).toBe('air');
   });
 
 });

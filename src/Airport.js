@@ -21,7 +21,6 @@ Airport.prototype.landingPermission = function(plane) {
 };
 
 Airport.prototype.takeOffPermission = function(plane) {
-  // return plane.takeoff(this);
   if (this.isWeatherGood()) {
     return this.orderTakeoff(plane);
   } else {

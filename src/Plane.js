@@ -1,6 +1,14 @@
 var Plane = function() {
-  this.status = 'flying';
-  this.location = 'air';
+  this._status = 'flying';
+  this._location = 'air';
+};
+
+Plane.prototype.location = function(){
+  return this._location;
+};
+
+Plane.prototype.status = function() {
+  return this._status;
 };
 
 Plane.prototype.requestLand = function(airport) {
@@ -12,18 +20,18 @@ Plane.prototype.requestTakeoff = function(airport) {
 };
 
 Plane.prototype.land = function(airport) {
-  if (this.status === 'flying') {
-    this.status = 'landed';
-    this.location = 'airport';
+  if (this.status() === 'flying') {
+    this._status = 'landed';
+    this._location = 'airport';
   } else {
     throw "Already landed";
   };
 };
 
 Plane.prototype.takeoff = function(airport) {
-  if (this.status === 'landed') {
-    this.status = 'flying';
-    this.location = 'air';
+  if (this.status() === 'landed') {
+    this._status = 'flying';
+    this._location = 'air';
   } else {
     throw "Already taken off";
   }
