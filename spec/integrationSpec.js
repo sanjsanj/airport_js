@@ -56,4 +56,17 @@ describe('Integration test', function() {
     expect(airport.landedPlanes.length).toBe(0);
   });
 
+  it('After all planes have taken off their status is \'flying\'', function() {
+    planes.forEach(function(plane) {
+      plane.requestLand(airport);
+    });
+    planes.forEach(function(plane) {
+      // plane.requestTakeoff(airport);
+      airport.orderTakeoff(plane);
+    });
+    planes.forEach(function(plane) {
+      expect(plane.status()).toBe('flying');
+    });
+  });
+
 });
