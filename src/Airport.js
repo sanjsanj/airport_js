@@ -24,7 +24,6 @@ Airport.prototype.landingPermission = function(plane) {
 
 Airport.prototype.takeOffPermission = function(plane) {
   if (this.isWeatherGood()) {
-    // this.landedPlanes.splice(plane);
     return this.orderTakeoff(plane);
   } else {
     throw "Permission denied";

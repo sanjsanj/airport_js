@@ -50,7 +50,6 @@ describe('Integration test', function() {
       plane.requestLand(airport);
     });
     planes.forEach(function(plane) {
-      // plane.requestTakeoff(airport);
       airport.orderTakeoff(plane);
     });
     expect(airport.landedPlanes.length).toBe(0);
@@ -61,7 +60,6 @@ describe('Integration test', function() {
       plane.requestLand(airport);
     });
     planes.forEach(function(plane) {
-      // plane.requestTakeoff(airport);
       airport.orderTakeoff(plane);
     });
     planes.forEach(function(plane) {
