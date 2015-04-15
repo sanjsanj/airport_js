@@ -11,15 +11,24 @@ Airport.prototype.orderTakeoff = function(plane) {
 };
 
 Airport.prototype.landingPermission = function(plane) {
-  if (this.capacity < 6) {
+  if (this.capacity < 6 && this.isWeatherGood()) {
     this.capacity ++;
     return plane.land(this);
     console.log(this.capacity);
   } else {
-    throw "Airport is full";
+    throw "Permission denied";
   };
 };
 
 Airport.prototype.takeOffPermission = function(plane) {
-  return plane.takeoff(this);
+  // return plane.takeoff(this);
+  if (this.isWeatherGood()) {
+    return this.orderTakeoff(plane);
+  } else {
+    throw "Permission denied";
+  };
+};
+
+Airport.prototype.isWeatherGood = function() {
+  return true;
 };

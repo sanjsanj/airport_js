@@ -56,6 +56,8 @@ describe('Airport can', function() {
 
 describe('When airport is full, it', function() {
 
+  var plane;
+
   beforeEach(function() {
     airport = new Airport();
     plane = jasmine.createSpyObj('plane', ['land']);
@@ -63,12 +65,37 @@ describe('When airport is full, it', function() {
 
   it('does not let a plane land', function() {
     plane.land.and.callFake(function() {
-      true;
+      return true;
     });
     for (var i = 0; i < 6; i++ ) {
         airport.landingPermission(plane);
       };
-    expect(function(){airport.landingPermission(plane)}).toThrow("Airport is full");
+    expect(function(){airport.landingPermission(plane)}).toThrow("Permission denied");
+  });
+
+});
+
+describe('When weather is bad, aiport does not let a plane', function() {
+
+  var plane;
+
+  beforeEach(function() {
+    airport = new Airport();
+    plane = jasmine.createSpyObj('plane', ['land']);
+  });
+
+  it('land', function() {
+    spyOn(airport, "isWeatherGood").and.callFake(function() {
+      return false;
+    });
+    expect(function(){airport.landingPermission(plane)}).toThrow("Permission denied");
+  });
+
+  it('takeoff', function() {
+    spyOn(airport, "isWeatherGood").and.callFake(function() {
+      return false;
+    });
+    expect(function(){airport.takeOffPermission(plane)}).toThrow("Permission denied");
   });
 
 });
